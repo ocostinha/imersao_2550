@@ -12,6 +12,6 @@ public class PrimeiraChamadaREST {
     @GetMapping
     @ResponseBody
     public ResponseEntity<String> primeiraChamada() {
-        return ResponseEntity.ok("Minha primeira chamada");
+        throw new NotFoundException();
     }
 }
