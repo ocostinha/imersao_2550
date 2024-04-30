@@ -1,5 +1,8 @@
-package br.com.fiap.imersao_2550;
+package br.com.fiap.imersao_2550.commons.exceptions.advisor;
 
+import br.com.fiap.imersao_2550.commons.exceptions.NomeNaoEncontradoException;
+import br.com.fiap.imersao_2550.commons.exceptions.NotFoundException;
+import br.com.fiap.imersao_2550.commons.exceptions.advisor.dto.ErroSaidaDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -33,13 +36,13 @@ public class ErrorController {
     }
 
     @ExceptionHandler(NomeNaoEncontradoException.class)
-    public ResponseEntity<ErroSaida> handleValidationExceptions(NomeNaoEncontradoException ex) {
-        return ResponseEntity.status(422).body(new ErroSaida("Nome não encontrado para realizar alterações"));
+    public ResponseEntity<ErroSaidaDTO> handleValidationExceptions(NomeNaoEncontradoException ex) {
+        return ResponseEntity.status(422).body(new ErroSaidaDTO("Nome não encontrado para realizar alterações"));
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErroSaida handleMissingParams(MissingServletRequestParameterException ex) {
-        return new ErroSaida(ex.getParameterName() + " não pode ser nulo");
+    public ErroSaidaDTO handleMissingParams(MissingServletRequestParameterException ex) {
+        return new ErroSaidaDTO(ex.getParameterName() + " não pode ser nulo");
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "br.com.fiap.imersao_2550")
+@EnableJpaRepositories(basePackages = "br.com.fiap.imersao_2550.resources.database.repository")
 public class Imersao2550Application {
 
 	public static void main(String[] args) {
