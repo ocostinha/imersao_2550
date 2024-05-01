@@ -1,7 +1,7 @@
 package br.com.fiap.imersao_2550.commons.exceptions.advisor;
 
-import br.com.fiap.imersao_2550.commons.exceptions.NomeNaoEncontradoException;
 import br.com.fiap.imersao_2550.commons.exceptions.NotFoundException;
+import br.com.fiap.imersao_2550.commons.exceptions.RegistroNaoEncontradoException;
 import br.com.fiap.imersao_2550.commons.exceptions.advisor.dto.ErroSaidaDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,9 +35,9 @@ public class ErrorController {
         return ResponseEntity.status(204).build();
     }
 
-    @ExceptionHandler(NomeNaoEncontradoException.class)
-    public ResponseEntity<ErroSaidaDTO> handleValidationExceptions(NomeNaoEncontradoException ex) {
-        return ResponseEntity.status(422).body(new ErroSaidaDTO("Nome não encontrado para realizar alterações"));
+    @ExceptionHandler(RegistroNaoEncontradoException.class)
+    public ResponseEntity<ErroSaidaDTO> handleValidationExceptions(RegistroNaoEncontradoException ex) {
+        return ResponseEntity.status(422).body(new ErroSaidaDTO("Registro não encontrado para realizar alterações"));
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)

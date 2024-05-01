@@ -2,50 +2,55 @@ package br.com.fiap.imersao_2550.core.business.impl;
 
 import br.com.fiap.imersao_2550.commons.exceptions.NotFoundException;
 import br.com.fiap.imersao_2550.commons.exceptions.RegistroNaoEncontradoException;
-import br.com.fiap.imersao_2550.core.business.NomeBusiness;
-import br.com.fiap.imersao_2550.core.domain.Nome;
-import br.com.fiap.imersao_2550.core.services.NomeService;
+import br.com.fiap.imersao_2550.core.business.TelefoneBusiness;
+import br.com.fiap.imersao_2550.core.domain.Telefone;
+import br.com.fiap.imersao_2550.core.services.TelefoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class NomeBusinessImpl implements NomeBusiness {
+public class TelefoneBusinessImpl implements TelefoneBusiness {
     @Autowired
-    NomeService service;
+    private TelefoneService service;
 
     @Override
-    public Nome cadatrar(Nome dominio) {
+    public Telefone cadatrar(Telefone dominio) {
         return service.cadatrar(dominio);
     }
 
     @Override
-    public List<Nome> consultarTodos() {
+    public List<Telefone> consultarTodos() {
         return service.consultarTodos();
     }
 
     @Override
-    public Nome consultarPorId(Long id) {
+    public Telefone consultarPorId(Long id) {
         return service.consultarPorId(id);
     }
 
     @Override
-    public Nome atualizarSobrenome(Long id, String sobrenome) {
+    public Telefone atualizarCelular(Long id, Long dddCelular, Long celular) {
         try {
-            return service.atualizarSobrenome(id, sobrenome);
+            return service.atualizarCelular(id, dddCelular, celular);
         } catch (NotFoundException ex) {
             throw new RegistroNaoEncontradoException();
         }
     }
 
     @Override
-    public Nome sobrescreverRegistro(Long id, Nome dominio) {
+    public Telefone atualizarFixo(Long id, Long dddFixo, Long fixo) {
         try {
-            return service.sobrescreverRegistro(id, dominio);
+            return service.atualizarFixo(id, dddFixo, fixo);
         } catch (NotFoundException ex) {
             throw new RegistroNaoEncontradoException();
         }
+    }
+
+    @Override
+    public Telefone sobrescreverRegistro(Long id, Telefone dominio) {
+        return service.sobrescreverRegistro(id, dominio);
     }
 
     @Override

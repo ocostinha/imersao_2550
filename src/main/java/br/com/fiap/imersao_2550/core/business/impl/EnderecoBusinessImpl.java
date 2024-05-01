@@ -2,45 +2,45 @@ package br.com.fiap.imersao_2550.core.business.impl;
 
 import br.com.fiap.imersao_2550.commons.exceptions.NotFoundException;
 import br.com.fiap.imersao_2550.commons.exceptions.RegistroNaoEncontradoException;
-import br.com.fiap.imersao_2550.core.business.NomeBusiness;
-import br.com.fiap.imersao_2550.core.domain.Nome;
-import br.com.fiap.imersao_2550.core.services.NomeService;
+import br.com.fiap.imersao_2550.core.business.EnderecoBusiness;
+import br.com.fiap.imersao_2550.core.domain.Endereco;
+import br.com.fiap.imersao_2550.core.services.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class NomeBusinessImpl implements NomeBusiness {
+public class EnderecoBusinessImpl implements EnderecoBusiness {
     @Autowired
-    NomeService service;
+    EnderecoService service;
 
     @Override
-    public Nome cadatrar(Nome dominio) {
+    public Endereco cadatrar(Endereco dominio) {
         return service.cadatrar(dominio);
     }
 
     @Override
-    public List<Nome> consultarTodos() {
+    public List<Endereco> consultarTodos() {
         return service.consultarTodos();
     }
 
     @Override
-    public Nome consultarPorId(Long id) {
+    public Endereco consultarPorId(Long id) {
         return service.consultarPorId(id);
     }
 
     @Override
-    public Nome atualizarSobrenome(Long id, String sobrenome) {
+    public Endereco atualizarLogradouro(Long id, String logradouro) {
         try {
-            return service.atualizarSobrenome(id, sobrenome);
+            return service.atualizarLogradouro(id, logradouro);
         } catch (NotFoundException ex) {
             throw new RegistroNaoEncontradoException();
         }
     }
 
     @Override
-    public Nome sobrescreverRegistro(Long id, Nome dominio) {
+    public Endereco sobrescreverRegistro(Long id, Endereco dominio) {
         try {
             return service.sobrescreverRegistro(id, dominio);
         } catch (NotFoundException ex) {
